@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "SystemEvent",
+  "namespace": "com.monitoring.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "service_name", "type": "string"},
+    {"name": "event_type", "type": {"type": "enum", "name": "EventType", "symbols": ["ERROR", "WARNING", "DEPLOYMENT", "SCALE_EVENT", "PERFORMANCE_DEGRADATION", "SECURITY_ALERT"]}},
+    {"name": "timestamp", "type": "long"},
+    {"name": "environment", "type": {"type": "enum", "name": "Environment", "symbols": ["PRODUCTION", "STAGING", "DEVELOPMENT"]}},
+    {"name": "details", "type": "string"},
+    {"name": "severity", "type": {"type": "enum", "name": "Severity", "symbols": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]}},
+    {"name": "metadata", "type": ["null", "string"], "default": null}
+  ]
+}
