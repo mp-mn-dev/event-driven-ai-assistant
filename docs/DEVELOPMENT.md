@@ -19,13 +19,13 @@ Building this project commit-by-commit.
 
 **Terminal 1 - Start Consumer:**
 ```bash
-python consumer/ai_consumer.py
+python3 consumer/ai_consumer.py
 ```
 Consumer waits for events.
 
 **Terminal 2 - Generate Events:**
 ```bash
-python producer/event_producer.py
+python3 producer/event_producer.py
 ```
 
 **Verify:** Events appear in Terminal 1 with formatted output.

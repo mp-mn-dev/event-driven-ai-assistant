@@ -35,13 +35,31 @@ docker-compose up -d
 
 **2. Run Producer (generates events):**
 ```bash
-python producer/event_producer.py
+python3 producer/event_producer.py
 ```
 
 **3. Run Consumer (analyzes with AI):**
 ```bash
-python consumer/ai_consumer.py
+python3 consumer/ai_consumer.py
 ```
+
+### View Kafka Messages
+
+**See messages waiting in Kafka:**
+```bash
+docker exec -it event-driven-ai-assistant-kafka-1 \
+  kafka-console-consumer --bootstrap-server localhost:9092 \
+  --topic system-events --from-beginning --max-messages 10
+```
+
+**Check consumer lag (how many messages behind):**
+```bash
+docker exec -it event-driven-ai-assistant-kafka-1 \
+  kafka-consumer-groups --bootstrap-server localhost:9092 \
+  --describe --group ai-consumer-group
+```
+
+Look for `LAG` column - 0 means caught up!
 
 ## 💡 What This Demonstrates
 
